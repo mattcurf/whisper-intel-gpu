@@ -1,0 +1,4 @@
+#!/bin/bash
+
+arch=$(uname -i)
+docker build --no-cache -t whisper -f Dockerfile.$arch .

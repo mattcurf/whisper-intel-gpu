@@ -1,0 +1,15 @@
+FROM mattcurf/ipex:latest 
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    apt-get install --no-install-recommends -q -y \
+    ffmpeg
+
+RUN mkdir /workspace && \
+   cd /workspace && \
+   git clone -b enable-intel-gpu https://github.com/mattcurf/whisper && \
+   cd whisper && \
+  pip install -r requirements.txt 
+
+COPY _run.sh /usr/share/lib/run_workspace.sh
+
+ENTRYPOINT ["/bin/bash", "/usr/share/lib/run_workspace.sh"]

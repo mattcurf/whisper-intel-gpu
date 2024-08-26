@@ -1,0 +1,10 @@
+#!/bin/bash
+
+_docker_image=whisper
+
+if [ -d "/dev/dri" ]; then
+  _args="--device /dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e HAS_GPU=1"
+fi
+
+echo $_docker_image
+docker run -it --rm --security-opt seccomp=unconfined -v `pwd`:/project -w /project $_args $_docker_image /bin/bash _run.sh 

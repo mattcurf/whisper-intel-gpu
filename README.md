@@ -15,8 +15,8 @@ Linux:
 ```bash
 $ git clone https://github.com/mattcurf/whisper-intel-gpu
 $ cd whisper-intel-gpu
-$ ./build.sh
-$ ./run.sh
+$ ./build
+$ ./run
 ```
 
 # Known issues
